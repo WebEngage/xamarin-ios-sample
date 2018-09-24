@@ -64,30 +64,7 @@ namespace WebEngageTest
 
             TestButton.TouchUpInside += (object sender, EventArgs e) =>
             {
-                var detailsProduct1 = new NSDictionary("Size", "L");
-
-                var product1 = new NSDictionary("SKU Code", "UHUH799",
-                                                "Product Name", "Armani Jeans",
-                                                "Price", 300.49,
-                                                "Details", detailsProduct1
-                                               );
-                var detailsProduct2 = new NSDictionary("Size", "L");
-
-                var product2 = new NSDictionary("SKU Code", "UHUH799",
-                                                "Product Name", "Armani Jeans",
-                                                "Price", 300.49,
-                                                "Details", detailsProduct1
-                                               );
-                var deliveryAddress = new NSDictionary("City", "San Francisco",
-                                                   "ZIP", "94121"
-                                                  );
-                var products = new NSMutableArray<NSDictionary>(product1, product2);
-
-                var orderPlacedAttributes = new NSDictionary("Products", products,
-                                                             "Delivery Address", deliveryAddress,
-                                                             "Coupons Applied", new NSMutableArray<NSString>(new NSString("BOGO17"), new NSString("BGH025"))
-                                                            );
-                WebEngage.SharedInstance().Analytics.TrackEventWithName("Order Placed", orderPlacedAttributes);
+                // For testing
             };
         }
 
