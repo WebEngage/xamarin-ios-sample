@@ -37,7 +37,7 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>WEGLicenseCode</key>
-	<string>~13410522d</string>
+	<string>YOUR-WEBENGAGE-LICENSE-CODE</string>
 	<key>WEGLogLevel</key>
 	<string>VERBOSE</string>
 	<key>UIBackgroundModes</key>
