@@ -269,23 +269,29 @@ For detailed instructions see our [documentation for integrating Push Notificati
 
 ### Rich Push Notifications
 
-1. Banner Push Notifications
+1. For Banner Push Notifications
 
-    1. Add a new project with Notification Service Extension as target in your main app.
+    1. Add a new project named `NotificationService` with Notification Service Extension as target in your main app.
 
     2. Download [WebEngage Banner Push Notification Extension SDK](https://s3-us-west-2.amazonaws.com/webengage-sdk/xamarin/ios/banner-push/0.1.0.0/WebEngageBannerPushXamariniOS.dll)
 
-    3. Add WebEngageBannerPushXamariniOS.dll to References in your Notification Service Extension.
+    3. Add WebEngageBannerPushXamariniOS.dll to References in your NotificationService project.
 
-2. Rating and Carousel Push Notifications
+2. For Rating and Carousel Push Notifications
 
-    1. Add a new project with Notification Content Extension as target in your main app.
+    1. Add a new project named `NotificationViewController` with Notification Content Extension as target in your main app.
 
     2. Download [WebEngage Notification App Extension SDK](https://s3-us-west-2.amazonaws.com/webengage-sdk/xamarin/ios/app-extension/0.1.0.0/WebEngageAppExXamariniOS.dll)
 
-    3. Add WebEngageAppExXamariniOS.dll to References in your Notification Content Extension project.
+    3. Add WebEngageAppExXamariniOS.dll to References in your NotificationViewController project.
 
-3. Set App Groups as group.[app-bundle-id].WEGNotificationGroup in Entitlements.plist of all three projects (your Xamarin.iOS app, Notification Service Extension and Notification Content Extension).
+    4. Open the `Info.plist` file for NotificationViewController. Expand NSExetnsion > NSExtensionAttributes. Look for UNNotificationExtensionCategory under NSExtensionAttributes. Add it if it is not present and set the type as Array. In its items, add the following values:
+
+        a. `WEG_CAROUSEL_V1` for Carousel Push Notifications
+
+        b. `WEG_RATING_V1` for Rating Push Notifications
+
+3. Set App Groups as group.[app-bundle-id].WEGNotificationGroup in `Entitlements.plist` of all three projects (your Xamarin.iOS app, NotificationService and NotificationViewController).
 
 For detailed explanation see our [documentation for integrating Rich Push Notification in iOS](https://docs.webengage.com/docs/ios-push-messaging#section-5-rich-push-notifications-optional).
 
@@ -345,9 +351,11 @@ namespace YourNamespace
 
 ## In-app Notifications
 
-Screens can be tracked to set rules for showing in-app notifications. For example, you can create a rule in WebEngage dashboard to show in-app notification on a particular screen.
+No additional steps are required to receive in-app notifications.
 
 ### Tracking Screens
+
+Screens can be tracked to set rules for showing in-app notifications. For example, you can create a rule in WebEngage dashboard to show in-app notification on a particular screen.
 
 ```csharp
 using WebEngageXamariniOS;
