@@ -277,6 +277,22 @@ For detailed instructions see our [documentation for integrating Push Notificati
 
     3. Add WebEngageBannerPushXamariniOS.dll to References in your NotificationService project.
 
+    4. Replace `NotificationService.cs` with the below code.
+
+        ```csharp
+        using Foundation;
+        using WebEngageBannerPushXamariniOS;
+
+        namespace NotificationService
+        {
+            [Register("NotificationService")]
+            public class NotificationService : WEXPushNotificationService
+            {
+
+            }
+        }
+        ```
+
 2. For Rating and Carousel Push Notifications
 
     1. Add a new project named `NotificationViewController` with Notification Content Extension as target in your main app.
@@ -290,6 +306,37 @@ For detailed instructions see our [documentation for integrating Push Notificati
         a. `WEG_CAROUSEL_V1` for Carousel Push Notifications
 
         b. `WEG_RATING_V1` for Rating Push Notifications
+
+    5. Replace `NotificationViewController.cs` with the below code.
+
+        ```csharp
+        using System;
+        using Foundation;
+        using UserNotifications;
+        using WebEngageAppExXamariniOS;
+
+        namespace NotificationViewController
+        {
+            public partial class NotificationViewController : WEXRichPushNotificationViewController
+            {
+                protected NotificationViewController(IntPtr handle) : base(handle)
+                {
+                    
+                }
+
+                public override void ViewDidLoad()
+                {
+                    base.ViewDidLoad();
+                }
+
+                [Export("didReceiveNotification:")]
+                public override void DidReceiveNotification(UNNotification notification)
+                {
+                    base.DidReceiveNotification(notification);
+                }
+            }
+        }
+        ```
 
 3. Set App Groups as group.[app-bundle-id].WEGNotificationGroup in `Entitlements.plist` of all three projects (your Xamarin.iOS app, NotificationService and NotificationViewController).
 
