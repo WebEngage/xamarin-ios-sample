@@ -23,6 +23,14 @@ namespace WebEngageTest
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField ScreenTextField { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton SetButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton TestButton { get; set; }
 
         [Outlet]
@@ -43,6 +51,16 @@ namespace WebEngageTest
             if (LoginButton != null) {
                 LoginButton.Dispose ();
                 LoginButton = null;
+            }
+
+            if (ScreenTextField != null) {
+                ScreenTextField.Dispose ();
+                ScreenTextField = null;
+            }
+
+            if (SetButton != null) {
+                SetButton.Dispose ();
+                SetButton = null;
             }
 
             if (TestButton != null) {

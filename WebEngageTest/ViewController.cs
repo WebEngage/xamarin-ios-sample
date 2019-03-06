@@ -62,6 +62,16 @@ namespace WebEngageTest
                 }
             };
 
+            SetButton.TouchUpInside += (object sender, EventArgs e) =>
+            {
+                // Set screen
+                string screen = ScreenTextField.Text;
+                if (screen != null && !screen.Equals(""))
+                {
+                    WebEngage.SharedInstance().Analytics.NavigatingToScreenWithName(screen);
+                }
+            };
+
             TestButton.TouchUpInside += (object sender, EventArgs e) =>
             {
                 // For testing
@@ -122,6 +132,10 @@ namespace WebEngageTest
             NSCalendar calendar = NSCalendar.CurrentCalendar;
             NSDate date = calendar.DateFromComponents(dateComponents);
             WebEngage.SharedInstance().User.SetAttribute("Last order date", date);
+
+            // List of user attributes
+            NSObject[] nsArray = { new NSString("xcode"), new NSString("xcode") };
+            WebEngage.SharedInstance().User.SetAttribute("IDEs", nsArray);
 
             // Complex custom user attributes
             NSDictionary<NSString, NSObject> dict = new NSDictionary<NSString, NSObject>();
@@ -188,9 +202,14 @@ namespace WebEngageTest
              */
             WebEngage.SharedInstance().Analytics.NavigatingToScreenWithName("Purchase Screen");
 
-            // Setting screen data
+            // Screen data
             var screenData = new NSDictionary("productId", "~hs7674",
                                              "price", 1200);
+
+            // Tracking screen with data
+            WebEngage.SharedInstance().Analytics.NavigatingToScreenWithName("Purchase Screen", screenData);
+
+            // Updating screen data
             WebEngage.SharedInstance().Analytics.UpdateCurrentScreenData(screenData);
         }
     }

@@ -23,7 +23,14 @@ namespace WebEngageTest
         {
             inAppNotificationDelegate = new InAppNotificationDelegate();
 
-            WebEngage.SharedInstance().Application(application, launchOptions, inAppNotificationDelegate, true);
+            bool autoRegister = true;
+            WebEngage.SharedInstance().Application(application, launchOptions, inAppNotificationDelegate, autoRegister);
+
+            //WebEngage.SharedInstance().Application(application, launchOptions);
+
+            //WebEngage.SharedInstance().Application(application, launchOptions, true);
+
+            //WebEngage.SharedInstance().Application(application, launchOptions, inAppNotificationDelegate);
 
             return true;
         }
