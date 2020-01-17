@@ -5,7 +5,7 @@ This is Xamarin.iOS sample application to demonstrate usage of Xamarin binding l
 
 ## Installation
 
-1. Download [WebEngage Xamarin iOS Library (v0.1.1.0)](https://s3-us-west-2.amazonaws.com/webengage-sdk/xamarin/ios/base/0.1.1.0/WebEngageXamariniOS.dll).
+1. Download [WebEngage Xamarin iOS Library (v0.3.0.0)](https://s3-us-west-2.amazonaws.com/webengage-sdk/xamarin/ios/base/0.3.0.0/WebEngageXamariniOS.dll).
 
 2. To consume this downloaded .DLL in your Xamarin.iOS app, you must first add a reference to your Xamarin.iOS project by right-clicking on the References node of your project and select Add Reference.
 
